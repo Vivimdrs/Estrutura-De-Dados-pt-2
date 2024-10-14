@@ -1,3 +1,3 @@
-public class Fila_IF {
+public interface Fila_IF {
     
 }
