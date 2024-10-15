@@ -2,13 +2,12 @@ public class Pilha implements Pilha_IF{
     private class Node{
        protected Filme_IF filme;
        protected Node prox;
+       protected Node anterior;
 
-       Node(){
-
-       }
        Node(Filme_IF filme){
         this.filme = filme;
         this.prox = null;
+        this.anterior = null;
        }
     }
     private Node top;
@@ -46,6 +45,13 @@ public class Pilha implements Pilha_IF{
         top = top.prox;
         tam--;
         return itemRemovido;
+    }
+    @Override
+    public Filme_IF top() throws Exception{
+        if (top == null) {
+            throw new Exception("Não possui filme.");
+        }
+        return top.filme;
     }
 
 }
