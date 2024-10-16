@@ -1,58 +1,30 @@
 public class Pilha implements Pilha_IF{
-    private class Node{
-       protected Filme_IF filme;
-       protected Node prox;
-       protected Node anterior;
-
-       Node(Filme_IF filme){
-        this.filme = filme;
-        this.prox = null;
-        this.anterior = null;
-       }
-    }
-    private Node top;
-    private int tam;
+    private ListaDuplamenteEncadeada list;
 
     Pilha(){
-
-    }
-    Pilha(Node top, int size){
-        this.top = null;
-        this.tam = 0;
+        this.list = new ListaDuplamenteEncadeada();
     }
 
     public boolean isEmpty(){
-        if(top == null){
-            return true;
-        }
-        return false;
+       return list.isEmpty();
     }
+
     @Override
     public void push(Filme_IF elemento){
-        Node novoNo = new Node(elemento);
-        if(!isEmpty()){
-            novoNo.prox = top;
-        }
-        top = novoNo;
-        tam++;
+        list.addLast(elemento);
     }
     @Override
     public Filme_IF pop() throws Exception{
-        if(top == null){
-            throw new Exception("Não possui filme.");
+        if(list.isEmpty()){
+            throw new Exception("Vazio");
         }
-        Filme_IF itemRemovido = top();
-        top = top.prox;
-        tam--;
-        return itemRemovido;
+        return list.removeLast();
     }
     @Override
     public Filme_IF top() throws Exception{
-        if (top == null) {
-            throw new Exception("Não possui filme.");
-        }
-        return top.filme;
+        return list.getLast();
     }
+    
 
 }
     
