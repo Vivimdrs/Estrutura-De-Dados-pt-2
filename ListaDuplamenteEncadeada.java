@@ -1,7 +1,7 @@
 
 
 public class ListaDuplamenteEncadeada {
-    // Classe interna Node para representar cada nó
+
     private class Node {
         Filme_IF filme;
         Node next;
