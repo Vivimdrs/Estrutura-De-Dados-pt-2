@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class BST {
     private Node root;
 
-    // Classe interna para representar um nó
     private static class Node {
         Filme_IF filme;
         Node left, right;
@@ -12,12 +15,11 @@ public class BST {
         }
     }
 
-    // Método para inserir um filme na árvore
+
     public void insert(Filme_IF filme) throws Exception {
         root = insertNode(root, filme);
     }
 
-    // Método auxiliar para inserir um nó
     private Node insertNode(Node node, Filme_IF filme) throws Exception {
         if (node == null) {
             return new Node(filme);
@@ -32,13 +34,11 @@ public class BST {
         return node;
     }
 
-    // Método para buscar um filme na árvore
-    public Filme_IF search(int id) throws Exception {
+    public Filme_IF search(long id) throws Exception {
         return searchNode(root, id);
     }
 
-    // Método auxiliar para buscar um nó
-    private Filme_IF searchNode(Node node, int id) throws Exception {
+    private Filme_IF searchNode(Node node, long id) throws Exception {
         if (node == null) {
             throw new Exception("Filme não encontrado");
         }
@@ -51,15 +51,13 @@ public class BST {
         }
     }
 
-    // Método para remover um filme da árvore
-    public Filme_IF remove(int id) throws Exception {
+    public Filme_IF remove(long id) throws Exception {
         RootNodeResult result = removeNode(root, id);
-        root = result.node; // Atualiza a raiz da árvore
-        return result.filme; // Retorna o filme removido
+        root = result.node;
+        return result.filme;
     }
 
-    // Método auxiliar para remover um nó
-    private RootNodeResult removeNode(Node node, int id) throws Exception {
+    private RootNodeResult removeNode(Node node, long id) throws Exception {
         if (node == null) {
             throw new Exception("Filme não encontrado");
         }
@@ -74,20 +72,19 @@ public class BST {
             node.right = result.node;
             filme = result.filme;
         } else {
-            filme = node.filme; // Filme encontrado
+            filme = node.filme;
             if (node.left == null) {
                 return new RootNodeResult(node.right, filme);
             } else if (node.right == null) {
                 return new RootNodeResult(node.left, filme);
             }
-            // Nó com dois filhos: obtenha o menor no lado direito
+
             node.filme = findMin(node.right);
             node.right = removeNode(node.right, node.filme.getID()).node;
         }
         return new RootNodeResult(node, filme);
     }
 
-    // Método auxiliar para encontrar o menor filme
     private Filme_IF findMin(Node node) {
         while (node.left != null) {
             node = node.left;
@@ -95,32 +92,27 @@ public class BST {
         return node.filme;
     }
 
-    // Método para calcular a altura da árvore
     public int height() {
         return height(root);
     }
 
-    // Método auxiliar para calcular a altura de um nó
     private int height(Node node) {
         if (node == null) {
-            return -1; // Se o nó for nulo, a altura é -1
+            return -1;
         }
         int leftHeight = height(node.left);
         int rightHeight = height(node.right);
-        return Math.max(leftHeight, rightHeight) + 1; // Retorna a maior altura + 1
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
-    // Método para verificar se a árvore está vazia
     public boolean isEmpty() {
         return root == null;
     }
 
-    // Método para obter o tamanho da árvore
     public int size() {
         return size(root);
     }
 
-    // Método auxiliar para calcular o tamanho da árvore
     private int size(Node node) {
         if (node == null) {
             return 0;
@@ -128,12 +120,10 @@ public class BST {
         return 1 + size(node.left) + size(node.right);
     }
 
-    // Método para verificar se a árvore é completa
     public boolean isComplete() {
         return isComplete(root, 0, size());
     }
 
-    // Método auxiliar para verificar se a árvore é completa
     private boolean isComplete(Node node, int index, int numberNodes) {
         if (node == null) {
             return true;
@@ -145,14 +135,12 @@ public class BST {
                isComplete(node.right, 2 * index + 2, numberNodes);
     }
 
-    // Método para percorrer a árvore em pré-ordem
     public Filme_IF[] preOrder() {
         List<Filme_IF> result = new ArrayList<>();
         preOrder(root, result);
         return result.toArray(new Filme_IF[0]);
     }
 
-    // Método auxiliar para percorrer a árvore em pré-ordem
     private void preOrder(Node node, List<Filme_IF> result) {
         if (node != null) {
             result.add(node.filme);
@@ -161,14 +149,12 @@ public class BST {
         }
     }
 
-    // Método para percorrer a árvore em ordem
     public Filme_IF[] order() {
         List<Filme_IF> result = new ArrayList<>();
         order(root, result);
         return result.toArray(new Filme_IF[0]);
     }
 
-    // Método auxiliar para percorrer a árvore em ordem
     private void order(Node node, List<Filme_IF> result) {
         if (node != null) {
             order(node.left, result);
@@ -177,14 +163,12 @@ public class BST {
         }
     }
 
-    // Método para percorrer a árvore em pós-ordem
     public Filme_IF[] postOrder() {
         List<Filme_IF> result = new ArrayList<>();
         postOrder(root, result);
         return result.toArray(new Filme_IF[0]);
     }
 
-    // Método auxiliar para percorrer a árvore em pós-ordem
     private void postOrder(Node node, List<Filme_IF> result) {
         if (node != null) {
             postOrder(node.left, result);
@@ -193,7 +177,6 @@ public class BST {
         }
     }
 
-    // Classe auxiliar para retornar o nó e o filme removido
     private static class RootNodeResult {
         Node node;
         Filme_IF filme;

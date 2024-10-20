@@ -12,6 +12,9 @@ public class BSTTest {
 
     @Test
     public void testInsertAndSearch() throws Exception {
+        assertEquals(filme1, tree.remove(1));
+        assertThrows(Exception.class, () -> tree.search(1));
+
         Filme_IF filme1 = new Filme(1, "Filme A", 5, 2020);
         Filme_IF filme2 = new Filme(2, "Filme B", 7, 2021);
         Filme_IF filme3 = new Filme(3, "Filme C", 6, 2019);
@@ -36,22 +39,22 @@ public class BSTTest {
         tree.insert(filme3);
 
         assertEquals(filme1, tree.remove(1));
-        assertThrows(Exception.class, () -> tree.search(1)); // Verifica se o filme foi removido
+        assertThrows(Exception.class, () -> tree.search(1));
     }
 
     @Test
     public void testHeight() {
-        assertEquals(-1, tree.height()); // Árvore vazia
+        assertEquals(-1, tree.height());
 
         Filme_IF filme1 = new Filme(1, "Filme A", 5, 2020);
         tree.insert(filme1);
-        assertEquals(0, tree.height()); // Árvore com um nó
+        assertEquals(0, tree.height());
 
         Filme_IF filme2 = new Filme(2, "Filme B", 7, 2021);
         tree.insert(filme2);
         Filme_IF filme3 = new Filme(3, "Filme C", 6, 2019);
         tree.insert(filme3);
-        assertEquals(1, tree.height()); // Árvore com três nós
+        assertEquals(1, tree.height());
     }
 
     @Test
@@ -88,6 +91,6 @@ public class BSTTest {
         tree.insert(filme2);
         tree.insert(filme3);
 
-        assertArrayEquals(new Filme_IF[]{filme1, filme2, filme3}, tree.inOrderTraversal());
+        assertArrayEquals(new Filme_IF[] { filme1, filme2, filme3 }, tree.inOrderTraversal());
     }
 }
