@@ -1,7 +1,4 @@
-
-
 public class ListaDuplamenteEncadeada {
-
     private class Node {
         Filme_IF filme;
         Node next;
@@ -41,6 +38,7 @@ public class ListaDuplamenteEncadeada {
         if (isEmpty()) {
             throw new Exception("A lista está vazia.");
         }
+
         Filme_IF filmeRemovido = tail.filme;
         if (head == tail) {
             head = null;
@@ -52,6 +50,7 @@ public class ListaDuplamenteEncadeada {
         size--;
         return filmeRemovido;
     }
+
     public Filme_IF getLast() throws Exception {
         if (isEmpty()) {
             throw new Exception("A lista está vazia.");
@@ -67,4 +66,3 @@ public class ListaDuplamenteEncadeada {
         return size;
     }
 }
-
