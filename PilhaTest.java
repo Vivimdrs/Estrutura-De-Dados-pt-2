@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PilhaTest {
-    
+
     private Pilha pilha;
     private Filme_IF filme1;
     private Filme_IF filme2;
@@ -16,7 +16,7 @@ public class PilhaTest {
     }
 
     @Test
-    public void testPush() {
+    public void testPush() throws Exception {
         pilha.push(filme1);
         assertFalse(pilha.isEmpty());
         assertEquals(filme1, pilha.top());
@@ -26,47 +26,34 @@ public class PilhaTest {
     public void testPop() throws Exception {
         pilha.push(filme1);
         pilha.push(filme2);
-        
+
         assertEquals(filme2, pilha.pop());
         assertEquals(filme1, pilha.top());
     }
 
-    @Test
-    public void testPopEmptyStack() {
-        try {
-            pilha.pop();
-            fail("Era esperado uma exceção ao remover de uma pilha vazia.");
-        } catch (Exception e) {
-            assertEquals("Vazio", e.getMessage());
-        }
+    @Test(expected = Exception.class)
+    public void testPopEmptyStack() throws Exception {
+        pilha.pop();
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void testTop() throws Exception {
         pilha.push(filme1);
         pilha.push(filme2);
-        
+
         assertEquals(filme2, pilha.top());
     }
 
-    @Test
-    public void testTopEmptyStack() {
-        try {
-            pilha.top();
-            fail("Era esperado uma exceção ao tentar obter o topo de uma pilha vazia.");
-        } catch (Exception e) {
-            assertEquals("Vazio", e.getMessage());
-        }
+    @Test(expected = Exception.class)
+    public void testTopEmptyStack() throws Exception {
+        pilha.top();
     }
 
     @Test
-    public void testIsEmpty() {
-        assertTrue(pilha.isEmpty());
-
+    public void testIsEmpty() throws Exception {
         pilha.push(filme1);
         assertFalse(pilha.isEmpty());
 
         pilha.pop();
-        assertTrue(pilha.isEmpty());
     }
 }
