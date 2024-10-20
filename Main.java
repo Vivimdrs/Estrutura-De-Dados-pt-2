@@ -4,6 +4,7 @@ public class Main {
         PilhaTest pilha = new PilhaTest();
         BSTTest bts = new BSTTest();
         ListaTest lista = new ListaTest();
+        TabelaHashTest hash = new TabelaHashTest();
 
         try {
             fila.setUp();
@@ -73,6 +74,27 @@ public class Main {
         } catch (Exception e) {
             System.err.println("Erro ao executar os testes para lista: " +
                     e.getMessage());
+        }
+
+        try {
+            hash.setUp();
+            hash.testInsertAndSearch();
+            hash.setUp();
+            hash.testRemove();
+            hash.setUp();
+            hash.testRemoveNonExistentFilm();
+            hash.setUp();
+            hash.testSearchNonExistentFilm();
+            hash.setUp();
+            hash.testIsEmpty();
+            hash.setUp();
+            hash.testInsertDuplicateFilm();
+            hash.setUp();
+            hash.testPrint();
+
+            System.out.println("Todos os testes para tabela hash executados com sucesso.");
+        } catch (Exception e) {
+            System.err.println("Erro ao executar os testes para tabela hash: " + e.getMessage());
         }
     }
 }
