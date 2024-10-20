@@ -8,8 +8,11 @@ public class Main {
         try {
             fila.setUp();
             fila.testEnqueueDequeue();
+            fila.setUp();
             fila.testHead();
+            fila.setUp();
             fila.testDequeueEmptyFila();
+            fila.setUp();
             fila.testHeadEmptyFila();
             System.out.println("Todos os testes para fila executados com sucesso.");
         } catch (Exception e) {
@@ -23,6 +26,7 @@ public class Main {
             pilha.testPopEmptyStack();
             pilha.testTop();
             pilha.testTopEmptyStack();
+            pilha.setUp();
             pilha.testIsEmpty();
 
             System.out.println("Todos os testes para pilha executados com sucesso.");
@@ -33,11 +37,17 @@ public class Main {
         try {
             bts.setUp();
             bts.testInsertAndSearch();
+            bts.setUp();
             bts.testRemove();
+            bts.setUp();
             bts.testHeight();
+            bts.setUp();
             bts.testIsEmpty();
+            bts.setUp();
             bts.testSize();
+            bts.setUp();
             bts.testIsComplete();
+            bts.setUp();
             bts.testTraversal();
             System.out.println("Todos os testes para bts executados com sucesso.");
         } catch (Exception e) {
@@ -47,11 +57,17 @@ public class Main {
         try {
             lista.setUp();
             lista.testAddLast();
+            lista.setUp();
             lista.testRemoveLast();
+            lista.setUp();
             lista.testRemoveLastFromEmptyList();
+            lista.setUp();
             lista.testIsEmpty();
+            lista.setUp();
             lista.testSize();
+            lista.setUp();
             lista.testGetLast();
+            lista.setUp();
             lista.testGetLastFromEmptyList();
             System.out.println("Todos os testes para lista executados com sucesso.");
         } catch (Exception e) {

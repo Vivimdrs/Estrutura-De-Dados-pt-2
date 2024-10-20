@@ -55,5 +55,6 @@ public class PilhaTest {
         assertFalse(pilha.isEmpty());
 
         pilha.pop();
+        assertTrue(pilha.isEmpty());
     }
 }
