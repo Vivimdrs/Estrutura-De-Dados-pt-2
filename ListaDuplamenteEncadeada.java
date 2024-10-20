@@ -24,7 +24,7 @@ public class ListaDuplamenteEncadeada {
         this.size = 0;
     }
 
-    public void addLast(Filme_IF filme) {
+    public void insert(Filme_IF filme) {
         Node newNode = new Node(filme);
         if (isEmpty()) {
             head = newNode;
@@ -37,7 +37,7 @@ public class ListaDuplamenteEncadeada {
         size++;
     }
 
-    public Filme_IF removeLast() throws Exception {
+    public Filme_IF remove(long id) throws Exception {
         if (isEmpty()) {
             throw new Exception("A lista está vazia.");
         }
@@ -66,5 +66,6 @@ public class ListaDuplamenteEncadeada {
     public int size() {
         return size;
     }
+    
 }
 

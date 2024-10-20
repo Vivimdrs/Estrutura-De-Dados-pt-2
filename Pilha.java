@@ -11,14 +11,14 @@ public class Pilha implements Pilha_IF{
 
     @Override
     public void push(Filme_IF elemento){
-        list.addLast(elemento);
+        list.insert(elemento);
     }
     @Override
     public Filme_IF pop() throws Exception{
         if(list.isEmpty()){
             throw new Exception("Vazio");
         }
-        return list.removeLast();
+        return list.remove(0);
     }
     @Override
     public Filme_IF top() throws Exception{
