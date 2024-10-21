@@ -1,31 +1,32 @@
-public class Pilha implements Pilha_IF{
+public class Pilha implements Pilha_IF {
     private ListaDuplamenteEncadeada list;
 
-    Pilha(){
+    Pilha() {
         this.list = new ListaDuplamenteEncadeada();
     }
 
-    public boolean isEmpty(){
-       return list.isEmpty();
+    public boolean isEmpty() {
+        return list.isEmpty();
     }
 
     @Override
     public void push(Filme_IF elemento){
         list.insert(elemento);
     }
+
     @Override
-    public Filme_IF pop() throws Exception{
-        if(list.isEmpty()){
+    public Filme_IF pop() throws Exception {
+        if (list.isEmpty()) {
             throw new Exception("Vazio");
         }
         return list.remove(0);
     }
+
     @Override
-    public Filme_IF top() throws Exception{
+    public Filme_IF top() throws Exception {
+        if (list.isEmpty()) {
+            throw new Exception("Vazio");
+        }
         return list.getLast();
     }
-    
-
 }
-    
-    
